@@ -66,7 +66,7 @@ const sidebar = {
   ],
 };
 
-function StartPage() {
+function CategoryPage() {
     return (
       <Feed
         mainFeaturedPost={mainFeaturedPost}
@@ -76,4 +76,4 @@ function StartPage() {
     );
 }
 
-export default StartPage;
+export default CategoryPage;
