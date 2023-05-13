@@ -24,8 +24,8 @@ function Main(props) {
       </Typography>
       <Divider />
       {posts.map((post) => (
-        <Markdown className="markdown" key={post.description.substring(0, 40)}>
-          {post.description}
+        <Markdown className="markdown" key={post.title.substring(0, 40)}>
+          {post.author}
         </Markdown>
       ))}
     </Grid>

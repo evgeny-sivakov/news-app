@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
 function Header(props) {
-  const { sections, title } = props;
+  const { categories, title } = props;
 
   return (
     <React.Fragment>
@@ -36,16 +36,16 @@ function Header(props) {
         variant="dense"
         sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
-        {sections.map((section) => (
+        {categories.map((category) => (
           <Link
             color="inherit"
             noWrap
-            key={section.title}
+            key={category.title}
             variant="body2"
-            href={section.url}
+            to={category.url}
             sx={{ p: 1, flexShrink: 0 }}
           >
-            {section.title}
+            {category.title}
           </Link>
         ))}
       </Toolbar>
@@ -54,7 +54,7 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  sections: PropTypes.arrayOf(
+  categories: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
