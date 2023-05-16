@@ -69,19 +69,20 @@ const sidebar = {
   ],
 };
 
-function StartPage() {
-  const { articles } = useLoaderData();
+ function StartPage() {
+  const {articles} = useLoaderData();
     return (
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
-      <Await resolve={articles}>
-        {(loadedArticles) => <Feed
-        mainFeaturedPost={mainFeaturedPost}
-        articles={loadedArticles}
-        sidebar={sidebar}
-      />}
-      </Await>
-    </Suspense>
-      
+        <Await resolve={articles}>
+          {(loadedArticles) => (
+            <Feed
+              mainFeaturedPost={mainFeaturedPost}
+              articles={loadedArticles}
+              sidebar={sidebar}
+            />
+          )}
+        </Await>
+      </Suspense>
     );
 }
 
@@ -91,6 +92,8 @@ async function loadArticles() {
   const response = await fetch('https://newsapi.org/v2/top-headlines?country=pl&apiKey=97ea32e9fd2e4d4e884ea8ea9b5d169c');
   const resData = await response.json();
   const articles = resData.articles.map(article => ({...article, image: 'https://media.istockphoto.com/id/1264074047/pl/wektor/naj%C5%9Bwie%C5%BCsze-informacje-w-tle.jpg?s=1024x1024&w=is&k=20&c=s8_Y-S1AS1GGOCBB6XOSKX3kdm5lhpRy0eTWlullPjg='}))
+  //const articles = resData.articles;
+  console.log(articles[0].content);
   return articles; 
 };
 

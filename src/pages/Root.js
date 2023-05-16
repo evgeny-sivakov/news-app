@@ -3,14 +3,7 @@ import Header from "../components/root/Header";
 import Footer from "../components/root/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Container from "@mui/material/Container";
-import { Link as RouterLink } from "react-router-dom";
 import React from "react";
-
-const LinkBehavior = React.forwardRef((props, ref) => {
-  const { href, ...other } = props;
-  // Map href (Material UI) -> to (react-router)
-  return <RouterLink ref={ref} to={href} {...other} />;
-});
 
 const categories = [
   { title: "Entertainment", url: "entertainment" },
@@ -23,18 +16,6 @@ const categories = [
 ];
 
 const theme = createTheme({
-  components: {
-    MuiLink: {
-      defaultProps: {
-        component: LinkBehavior,
-      },
-    },
-    MuiButtonBase: {
-      defaultProps: {
-        LinkComponent: LinkBehavior,
-      },
-    },
-  },
   palette: {
     primary: {
       main: "#0052cc",
@@ -48,8 +29,8 @@ const theme = createTheme({
 function RootLayout() {
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="lg">
-        <Header title="Just news" categories={categories} />
+      <Container className="root" maxWidth="lg">
+        <Header title="JUST NEWS" categories={categories} />
         <main>
           <Outlet />
         </main>

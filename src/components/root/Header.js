@@ -12,11 +12,11 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Button size="small">Subscribe</Button>
         <Typography
           component="h2"
-          variant="h5"
+          variant="h3"
           color="inherit"
           align="center"
           noWrap
@@ -34,19 +34,19 @@ function Header(props) {
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
+        sx={{ justifyContent: "space-between", overflowX: "auto" }}
       >
         {categories.map((category) => (
-          <Link
-            color="inherit"
-            noWrap
-            key={category.title}
-            variant="body2"
-            to={category.url}
-            sx={{ p: 1, flexShrink: 0 }}
-          >
-            {category.title}
-          </Link>
+            <Link
+              color="inherit"
+              noWrap
+              key={category.title}
+              variant="body2"
+              href={category.url}
+              sx={{ p: 1, flexShrink: 0 }}
+            >
+              {category.title}
+            </Link>
         ))}
       </Toolbar>
     </React.Fragment>

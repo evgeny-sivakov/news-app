@@ -3,6 +3,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import Feed from "../components/feed/Feed";
 import { defer, useLoaderData, Await } from 'react-router-dom';
 import { Suspense } from 'react';
+import { capitalize } from 'lodash';
 
 /* const ARTICLES = [
   {
@@ -76,11 +77,13 @@ const sidebar = {
 };
 
 function CategoryPage() {
-  const { articles } = useLoaderData();
+  const { articles, categoryID } = useLoaderData();
     return (
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
       <Await resolve={articles}>
         {(loadedArticles) => <Feed
+        categoryID={categoryID}
+        title={capitalize(categoryID)}
         mainFeaturedPost={mainFeaturedPost}
         articles={loadedArticles}
         sidebar={sidebar}
@@ -101,7 +104,9 @@ async function loadCategoryArticles(categoryID) {
 
 export function loader({params}) {
   const categoryID = params.categoryID;
+  // const categoryTitle = capitalize(categoryID);
   return defer({
-    articles: loadCategoryArticles(categoryID)
+    articles: loadCategoryArticles(categoryID),
+    categoryID
   })
 }
