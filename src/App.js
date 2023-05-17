@@ -8,6 +8,7 @@ import CategoryPage, {
 import FullArticlePage from "./pages/FullArticle";
 import SubscribePage from "./pages/Subscribe";
 import { ThemeProvider } from "@emotion/react";
+import SignUpPage from "./pages/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+      { path: "signup", element: <SignUpPage /> },
     ],
   },
   { path: "subscribe", element: <SubscribePage /> },

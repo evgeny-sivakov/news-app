@@ -93,7 +93,6 @@ async function loadArticles() {
   const resData = await response.json();
   const articles = resData.articles.map(article => ({...article, image: 'https://media.istockphoto.com/id/1264074047/pl/wektor/naj%C5%9Bwie%C5%BCsze-informacje-w-tle.jpg?s=1024x1024&w=is&k=20&c=s8_Y-S1AS1GGOCBB6XOSKX3kdm5lhpRy0eTWlullPjg='}))
   //const articles = resData.articles;
-  console.log(articles[0].content);
   return articles; 
 };
 
