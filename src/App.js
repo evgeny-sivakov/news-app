@@ -1,11 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import StartPage, { loader as generalArticlesLoader } from "./pages/Start";
 import RootLayout from "./pages/Root";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, createTheme } from "@mui/material";
 import CategoryPage, {
   loader as categoryArticlesLoader,
 } from "./pages/Category";
 import FullArticlePage from "./pages/FullArticle";
+import SubscribePage from "./pages/Subscribe";
+import { ThemeProvider } from "@emotion/react";
 
 const router = createBrowserRouter([
   {
@@ -31,14 +33,25 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "subscribe", element: <SubscribePage /> },
 ]);
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#0052cc",
+    },
+    secondary: {
+      main: "#edf2ff",
+    },
+  },
+});
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <RouterProvider router={router} />;
-    </>
+    </ThemeProvider>
   );
 }
 
