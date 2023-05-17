@@ -1,7 +1,7 @@
-import { Container, Paper, Typography } from "@mui/material";
-import SubscribeForm from "../components/subscribe/SubscribeForm";
 import { useState } from "react";
+import { Container, Paper, Typography } from "@mui/material";
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import SubscribeForm from "../components/subscribe/SubscribeForm";
 
 function SubscribePage() {
   const [isSubsribed, setIsSubscribed] = useState(false);

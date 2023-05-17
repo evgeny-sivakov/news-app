@@ -1,8 +1,8 @@
+import { Suspense } from "react";
+import { Await, defer, useLoaderData } from 'react-router-dom';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Feed from "../components/feed/Feed";
-import { Await, defer, useLoaderData } from 'react-router-dom';
-import { Suspense } from "react";
 
 /* const ARTICLES = [
   {

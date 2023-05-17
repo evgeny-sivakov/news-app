@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { CssBaseline, createTheme } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 import StartPage, { loader as generalArticlesLoader } from "./pages/Start";
 import RootLayout from "./pages/Root";
-import { CssBaseline, createTheme } from "@mui/material";
 import CategoryPage, {
   loader as categoryArticlesLoader,
 } from "./pages/Category";
 import FullArticlePage from "./pages/FullArticle";
 import SubscribePage from "./pages/Subscribe";
-import { ThemeProvider } from "@emotion/react";
 import SignUpPage from "./pages/SignUp";
 
 const router = createBrowserRouter([

@@ -1,9 +1,9 @@
-import MainFeaturedPost from "./MainFeaturedPost";
+import { Box, Typography } from "@mui/material";
 import Grid from '@mui/material/Grid';
+import MainFeaturedPost from "./MainFeaturedPost";
 import FeaturedPost from "./FeaturedPost";
 import Main from "./Main";
 import Sidebar from "./Sidebar";
-import { Box, Typography } from "@mui/material";
 
 function Feed({mainFeaturedPost, articles, sidebar, title, categoryID}) {
     return (

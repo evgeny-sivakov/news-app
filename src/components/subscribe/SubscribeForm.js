@@ -1,12 +1,15 @@
 import { Box, Button, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function SubscribeForm() {
+  const navigate = useNavigate();
   const submitHandler = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
         email: data.get('email'),
     })
+    navigate('/')
   };
   return (
     <Box component="form" onSubmit={submitHandler} noValidate sx={{display: 'flex', flexDirection: 'column'}}>

@@ -1,9 +1,9 @@
+import { Suspense } from 'react';
+import { defer, useLoaderData, Await, useParams } from 'react-router-dom';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import Feed from "../components/feed/Feed";
-import { defer, useLoaderData, Await } from 'react-router-dom';
-import { Suspense } from 'react';
 import { capitalize } from 'lodash';
+import Feed from "../components/feed/Feed";
 
 /* const ARTICLES = [
   {
@@ -78,6 +78,9 @@ const sidebar = {
 
 function CategoryPage() {
   const { articles, categoryID } = useLoaderData();
+
+  const params = useParams();
+  console.log(params.categoryID) // the dynamic path to this page
     return (
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
       <Await resolve={articles}>
