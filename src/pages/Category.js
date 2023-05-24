@@ -1,7 +1,5 @@
 import { Suspense } from 'react';
-import { defer, useLoaderData, Await, useParams } from 'react-router-dom';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import { defer, Await, useParams, useRouteLoaderData } from 'react-router-dom';
 import { capitalize } from 'lodash';
 import Feed from "../components/feed/Feed";
 
@@ -66,21 +64,12 @@ const mainFeaturedPost = {
   linkText: 'Continue reading…',
 };
 
-const sidebar = {
-  title: 'News API',
-  description:
-    'Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API',
-  social: [
-    { name: 'GitHub', icon: GitHubIcon, link: 'https://github.com/News-API-gh' },
-    { name: 'Twitter', icon: TwitterIcon, link: 'https://twitter.com/NewsAPIorg' },
-  ],
-};
-
 function CategoryPage() {
-  const { articles, categoryID } = useLoaderData();
-
+  const { articles } = useRouteLoaderData("category-page");
+  console.log(articles)
   const params = useParams();
-  console.log(params.categoryID) // the dynamic path to this page
+  const categoryID = params.categoryID;
+
     return (
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
       <Await resolve={articles}>
@@ -89,7 +78,6 @@ function CategoryPage() {
         title={capitalize(categoryID)}
         mainFeaturedPost={mainFeaturedPost}
         articles={loadedArticles}
-        sidebar={sidebar}
       />}
       </Await>
     </Suspense>
@@ -99,17 +87,14 @@ function CategoryPage() {
 export default CategoryPage;
 
 async function loadCategoryArticles(categoryID) {
-  const response = await fetch(`https://newsapi.org/v2/top-headlines?country=pl&category=${categoryID}&apiKey=97ea32e9fd2e4d4e884ea8ea9b5d169c`);
+  const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${categoryID}&apiKey=97ea32e9fd2e4d4e884ea8ea9b5d169c`);
   const resData = await response.json();
-  const articles = resData.articles.map(article => ({...article, image: 'https://media.istockphoto.com/id/1264074047/pl/wektor/naj%C5%9Bwie%C5%BCsze-informacje-w-tle.jpg?s=1024x1024&w=is&k=20&c=s8_Y-S1AS1GGOCBB6XOSKX3kdm5lhpRy0eTWlullPjg='}))
-  return articles;
+  return resData.articles;
 };
 
 export function loader({params}) {
   const categoryID = params.categoryID;
-  // const categoryTitle = capitalize(categoryID);
   return defer({
     articles: loadCategoryArticles(categoryID),
-    categoryID
   })
 }

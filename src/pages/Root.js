@@ -9,7 +9,6 @@ import Footer from "../components/root/Footer";
 const categories = [
   { title: "Entertainment", url: "/entertainment" },
   { title: "Health", url: "/health" },
-  { title: "General", url: "/general" },
   { title: "Business", url: "/business" },
   { title: "Science", url: "/science" },
   { title: "Sports", url: "/sports" },
@@ -30,8 +29,8 @@ function RootLayout() {
         </main>
       </Container>
       <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
+        title="About NEWS API"
+        description="Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API"
       />
     </>
   );

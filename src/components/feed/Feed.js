@@ -2,35 +2,26 @@ import { Box, Typography } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import MainFeaturedPost from "./MainFeaturedPost";
 import FeaturedPost from "./FeaturedPost";
-import Main from "./Main";
-import Sidebar from "./Sidebar";
 
-function Feed({mainFeaturedPost, articles, sidebar, title, categoryID}) {
+
+function Feed({mainFeaturedPost, articles, title, categoryID}) {
     return (
       <>
-        <Box sx={{padding: '20px 0'}}>
+        <Box sx={{ padding: "20px 0" }}>
           <Typography component="h2" variant="h4" align="center">
             {title}
           </Typography>
         </Box>
-        <MainFeaturedPost post={mainFeaturedPost} />
-        <Grid container spacing={4}>
-          {articles.map((article) => (
+        <MainFeaturedPost post={mainFeaturedPost} categoryID={categoryID} />
+        <Grid container spacing={4} >
+          {articles.map((article, index) => (
             <FeaturedPost
-              key={article.title}
+              key={index}
               article={article}
               categoryID={categoryID}
+              articleIndex={index}
             />
           ))}
-        </Grid>
-        <Grid container spacing={5} sx={{ mt: 3 }}>
-          <Main title="From the firehose" posts={articles} />
-          <Sidebar
-            title={sidebar.title}
-            description={sidebar.description}
-            archives={sidebar.archives}
-            social={sidebar.social}
-          />
         </Grid>
       </>
     );

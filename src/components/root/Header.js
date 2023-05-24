@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { TextField } from '@mui/material';
 
 function Header(props) {
   const { categories, title } = props;
@@ -13,7 +14,9 @@ function Header(props) {
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Button href='subscribe' size="small">Subscribe</Button>
+        <Button href="subscribe" size="small">
+          Subscribe
+        </Button>
         <Typography
           component="h2"
           variant="h3"
@@ -25,6 +28,14 @@ function Header(props) {
           {title}
         </Typography>
         <IconButton>
+          <TextField
+            id="search-input"
+            label="Search..."
+            variant="filled"
+            type="search"
+            size="small"
+            
+          />
           <SearchIcon />
         </IconButton>
         <Button variant="outlined" size="small">
@@ -34,19 +45,19 @@ function Header(props) {
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: "space-between", overflowX: "auto" }}
+        sx={{ justifyContent: "space-evenly", overflowX: "auto" }}
       >
         {categories.map((category) => (
-            <Link
-              color="inherit"
-              noWrap
-              key={category.title}
-              variant="body2"
-              href={category.url}
-              sx={{ p: 1, flexShrink: 0 }}
-            >
-              {category.title}
-            </Link>
+          <Link
+            color="inherit"
+            noWrap
+            key={category.title}
+            variant="body2"
+            href={category.url}
+            sx={{ p: 1, flexShrink: 0 }}
+          >
+            {category.title}
+          </Link>
         ))}
       </Toolbar>
     </React.Fragment>

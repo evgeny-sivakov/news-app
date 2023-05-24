@@ -18,16 +18,15 @@ const router = createBrowserRouter([
       { index: true, element: <StartPage />, loader: generalArticlesLoader },
       {
         path: ":categoryID",
-        id: "category",
+        id: "category-page",
+        loader: categoryArticlesLoader,
         children: [
           {
             index: true,
             element: <CategoryPage />,
-            loader: categoryArticlesLoader,
           },
           {
             path: ":articleID",
-            id: "full-article",
             element: <FullArticlePage />,
           },
         ],
