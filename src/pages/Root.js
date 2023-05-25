@@ -5,7 +5,6 @@ import { Box } from "@mui/material";
 import Header from "../components/root/Header";
 import Footer from "../components/root/Footer";
 
-
 const categories = [
   { title: "Entertainment", url: "/entertainment" },
   { title: "Health", url: "/health" },
@@ -15,13 +14,11 @@ const categories = [
   { title: "Technology", url: "/technology" },
 ];
 
-
-
 function RootLayout() {
   return (
     <>
       <Container className="root" maxWidth="lg">
-        <Box component='header' sx={{paddingTop: '30px',}}>
+        <Box component="header" sx={{ paddingTop: "30px" }}>
           <Header title="JUST NEWS" categories={categories} />
         </Box>
         <main>

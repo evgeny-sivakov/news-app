@@ -1,10 +1,9 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import { LinkedIn } from '@mui/icons-material';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import { LinkedIn } from "@mui/icons-material";
 
 function Copyright() {
   return (
@@ -12,7 +11,7 @@ function Copyright() {
       variant="body2"
       color="text.secondary"
       align="center"
-      sx={{ display: "flex", gap: '10px', justifyContent: 'center' }}
+      sx={{ display: "flex", gap: "10px", justifyContent: "center" }}
     >
       {"Copyright © "}
       <Link color="inherit" href="https://www.linkedin.com/in/eugenesivakou/">
@@ -36,7 +35,6 @@ function Footer(props) {
           variant="h6"
           sx={{ display: "block", align: "center", textDecoration: "none" }}
           align="center"
-          
         >
           {title}
         </Typography>
@@ -54,10 +52,5 @@ function Footer(props) {
     </Box>
   );
 }
-
-Footer.propTypes = {
-  description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
 
 export default Footer;

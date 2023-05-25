@@ -1,19 +1,17 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
-function MainFeaturedPost({post, categoryID}) {
-  
+function MainFeaturedPost({ post, index, categoryID }) {
   return (
     <Paper
       component="a"
-      href={`${categoryID}/${post.title}`}
+      href={`${categoryID}/${index}`}
       sx={{
         display: "flex",
-        textDecoration: 'none',
+        textDecoration: "none",
         maxWidth: "auto",
         maxHeight: "500px",
         position: "relative",
@@ -53,24 +51,11 @@ function MainFeaturedPost({post, categoryID}) {
             >
               {post.title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
-            </Typography>
           </Box>
         </Grid>
       </Grid>
     </Paper>
   );
 }
-
-MainFeaturedPost.propTypes = {
-  post: PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    //urlToImage: PropTypes.string.isRequired,
-    //imageText: PropTypes.string.isRequired,
-    //linkText: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default MainFeaturedPost;

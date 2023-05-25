@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
 function ArticleDetails({ article }) {
-  console.log(article);
   const date = new Date(article.publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",

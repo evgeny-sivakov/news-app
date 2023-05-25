@@ -7,15 +7,18 @@ import CategoryPage, {
   loader as categoryArticlesLoader,
 } from "./pages/Category";
 import FullArticlePage from "./pages/FullArticle";
-import SubscribePage from "./pages/Subscribe";
-import SignUpPage from "./pages/SignUp";
+import SubscribePage, { action as subscribeAction } from "./pages/Subscribe";
+import QueryPage, { action as searchAction } from "./pages/Query";
+import ErrorPage from "./pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <StartPage />, loader: generalArticlesLoader },
+      { path: "query", element: <QueryPage />, action: searchAction },
       {
         path: ":categoryID",
         id: "category-page",
@@ -31,10 +34,13 @@ const router = createBrowserRouter([
           },
         ],
       },
-      { path: "signup", element: <SignUpPage /> },
+      {
+        path: "subscribe",
+        element: <SubscribePage />,
+        action: subscribeAction,
+      },
     ],
   },
-  { path: "subscribe", element: <SubscribePage /> },
 ]);
 
 const theme = createTheme({

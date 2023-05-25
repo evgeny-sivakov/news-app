@@ -1,46 +1,65 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import { TextField } from '@mui/material';
+import * as React from "react";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import Link from "@mui/material/Link";
+import { InputBase, Paper } from "@mui/material";
+import { useSubmit } from "react-router-dom";
 
 function Header(props) {
+  const [inputValue, setInputValue] = React.useState("");
   const { categories, title } = props;
+  const submit = useSubmit();
+  const searchHandler = (event) => {
+    event.preventDefault();
+    submit(event.currentTarget, { method: "put", action: "/query" });
+    setInputValue("");
+  };
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Button href="subscribe" size="small">
+      <Toolbar
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-between",
+          borderBottom: 1,
+          borderColor: "divider",
+          paddingBottom: { xs: "10px", md: 0, lg: 0 },
+        }}
+      >
+        <Button href="/subscribe" size="small">
           Subscribe
         </Button>
-        <Typography
-          component="h2"
-          variant="h3"
-          color="inherit"
-          align="center"
-          noWrap
-          sx={{ flex: 1 }}
+        <Link
+          href="/"
+          sx={{ textDecoration: "none", fontSize: "3rem", color: "black" }}
         >
           {title}
-        </Typography>
-        <IconButton>
-          <TextField
-            id="search-input"
-            label="Search..."
-            variant="filled"
-            type="search"
-            size="small"
-            
+        </Link>
+        <Paper
+          component="form"
+          onSubmit={searchHandler}
+          sx={{
+            p: "2px 4px",
+            display: "flex",
+            alignItems: "center",
+            width: 300,
+          }}
+        >
+          <InputBase
+            name="query-string"
+            value={inputValue}
+            onChange={(event) => setInputValue(event.target.value)}
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Search news"
+            inputProps={{ "aria-label": "search news" }}
           />
-          <SearchIcon />
-        </IconButton>
-        <Button variant="outlined" size="small">
-          Sign up
-        </Button>
+          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+        </Paper>
       </Toolbar>
       <Toolbar
         component="nav"
@@ -63,15 +82,5 @@ function Header(props) {
     </React.Fragment>
   );
 }
-
-Header.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  title: PropTypes.string.isRequired,
-};
 
 export default Header;
